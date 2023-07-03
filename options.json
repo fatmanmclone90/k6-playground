@@ -1,0 +1,12 @@
+{
+    "discardResponseBodies": true,
+    "scenarios": {
+        "constant-arrival": {
+            "executor": "constant-arrival-rate",
+            "duration": "30s",
+            "rate": 30,
+            "timeUnit": "1s",
+            "preAllocatedVUs": 50
+        }
+    }
+}

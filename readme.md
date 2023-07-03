@@ -24,7 +24,7 @@ Start influxdb and grafana:
 
 Execute a test:
 
-`docker-compose run k6 run /scripts/grpc-test.js`
+`docker-compose run --rm k6 run --config /scripts/options.json /scripts/grpc-test.js`
 
 To stop:
 
@@ -40,6 +40,6 @@ tbc
 
 ### Dashboards
 
-Import gprc dashboard from `./grpc-dashboard.json'
+Import gprc dashboard from `./grpc-dashboard.json`
 
 For http tests import `https://grafana.com/dashboards/2587`
