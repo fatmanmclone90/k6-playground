@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Whds.WarehouseEventValidator.Api";
+
+package validate;
+
+service Validator {
+
+  rpc Validate (ValidationGrpcRequest) returns (ValidationGrpcResponse);
+}
+
+message ValidationGrpcRequest {
+
+  string messageType = 1;
+  string messageVersion = 2;
+  string payload = 3;
+}
+
+message ValidationGrpcResponse {
+
+  string timestamp = 1;
+  string isValid = 2;
+  repeated string validationFailures = 3;
+}
