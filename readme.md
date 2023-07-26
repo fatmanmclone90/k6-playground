@@ -16,7 +16,7 @@ Expecting payload like:
 
 ### Executing with Docker
 
-`docker run -i -p 6001:6001 -v ${PWD}/report:/home/k6 -v ${PWD}:/scripts grafana/k6 run --vus 1 --duration 1s /scripts/http-test.js`
+`docker run --rm -i -p 6001:6001 -v ${PWD}/report:/home/k6 -v ${PWD}:/scripts grafana/k6 run --vus 1 --duration 1s /scripts/http-test.js`
 
 Test report generated in `./report`.
 
