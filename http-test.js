@@ -1,8 +1,9 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 export default function () {
-    const url = 'http://host.docker.internal:5001/validate';
+    const url = 'http://host.docker.internal:6001/validate';
     const payload = JSON.stringify({
         messageType: "SampleMessage",
         messageVersion: "v1",
@@ -21,3 +22,9 @@ export default function () {
         'is status 200': (r) => r.status === 200,
     });
 }
+
+export function handleSummary(data) {
+    return {
+      "summary.html": htmlReport(data),
+    };
+  }

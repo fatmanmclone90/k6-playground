@@ -1,5 +1,27 @@
 # Setup
 
+## HTTP
+
+Assumes HTTP server running on http://localhost:6001
+
+Expecting payload like:
+
+```
+{
+    "messageType": "SampleMessage",
+    "messageVersion": "v1",
+    "payload": "{ \"property1\": \"1\", \"property2\": 2 }"
+}
+```
+
+### Executing with Docker
+
+`docker run -i -p 6001:6001 -v ${PWD}/report:/home/k6 -v ${PWD}:/scripts grafana/k6 run --vus 1 --duration 1s /scripts/http-test.js`
+
+Test report generated in `./report`.
+
+## GRPC
+
 Assumes GRPC server running on grpc://localhost:5005
 
 Expecting payload like:
@@ -12,11 +34,11 @@ Expecting payload like:
 }
 ```
 
-# Executing with Docker
+### Executing with Docker
 
 `docker run --rm -i -p 5005:5005 -v ${PWD}:/scripts grafana/k6 run --vus 10 --duration 30s /scripts/grpc-test.js`
 
-# Docker Compose
+### Docker Compose
 
 Start influxdb and grafana:
 
@@ -30,15 +52,15 @@ To stop:
 
 `docker-compose down k6-playground`
 
-## Grafana
+#### Grafana
 
 Go to `http://localhost:3000`
 
-### Adding a Data Source
+#### Adding a Data Source
 
 tbc
 
-### Dashboards
+#### Dashboards
 
 Import gprc dashboard from `./grpc-dashboard.json`
 
